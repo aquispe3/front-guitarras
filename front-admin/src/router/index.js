@@ -52,7 +52,7 @@ const router = createRouter({
 router.beforeEach((to,from,next)=>{
   const token = localStorage.getItem("token");
   const requireAuth = to.meta.requireAuth
-  if(requireAuth && !token){
+  if(requireAuth && !token){ //  es requerido token y no tiene tocket
     localStorage.clear();
     next('login');
   }else{

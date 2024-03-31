@@ -3,7 +3,6 @@ export function registrarToken(token){
         console.log("token: "+token)
         localStorage.setItem('token', JSON.stringify(token).valueOf());
     }
-    
 }
 export function headerConfig(){
     const token =   localStorage.getItem('token');

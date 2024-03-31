@@ -3,7 +3,7 @@
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     <v-toolbar-title>SISTEMA</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn variant="text" icon="mdi mdi-logout" @click="go('login')"></v-btn>
+    <v-btn variant="text" icon="mdi mdi-logout" @click="salir()"></v-btn>
   </v-app-bar>
 
     <v-navigation-drawer
@@ -54,8 +54,11 @@ const router = useRouter();
 
 const drawer = ref(false);
 const go=(name) =>{
-  
   router.push({name:name});
+}
+const salir = () =>{
+  localStorage.clear();
+  router.push({name:'login'});
 }
 
 </script>

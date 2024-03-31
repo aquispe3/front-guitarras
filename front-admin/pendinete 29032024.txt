@@ -1,0 +1,14 @@
+tarea pendiente
+===============================
+1. lo envia token // se ha solucionado e backend
+2. no crea variables de entorno correctamente en frontend // solucionado
+3. el boton salir no esta funcionando, no limpia token // solucionado
+4. aumentra un progress bar en las llamadas a las apis (si alcanza tiempo) // solucionado
+6. tarea crud para personas usando pinia
+
+
+
+
+7. subir a reporsitorio // subir a repositorio
+
+5. usar sessiones en vez de token (modulo III)00000000

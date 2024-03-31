@@ -3,6 +3,11 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import {ref} from 'vue';
 import { headerConfig } from '@/composable/tokenComposable'
+//const api_leal = import.meta.env.VITE_API_LEAL;
+const api = import.meta.env.API_BACKEND_GUITARRA;
+
+
+
 
 
 export const useGuitarraStore = defineStore("GuitarraStore", () => {
@@ -11,20 +16,19 @@ export const useGuitarraStore = defineStore("GuitarraStore", () => {
 
     const obtenerGuitarras = async () =>{
         console.log(headerConfig());
-        let r =  await axios.get(`http://localhost:2024/api/guitarra/obtener-todos`,headerConfig());
+        let r =  await axios.get(`https://quickpay.com.bo:2024/api/guitarra/obtener-todos`,headerConfig());
         listaGuitarra.value = r.data.result;
     };
     const eliminarGuitarra = async(guitarraId) =>{
-        await axios.delete(`http://localhost:2024/api/guitarra/eliminar/${guitarraId}`,headerConfig());
+        await axios.delete(`https://quickpay.com.bo:2024/api/guitarra/eliminar/${guitarraId}`,headerConfig());
     };
     const editarGuitarra = async(objGuitarra) =>{
-        await axios.put(`http://localhost:20240/api/guitarra/modificar`,objGuitarra,headerConfig());
+        await axios.put(`https://quickpay.com.bo:2024/api/guitarra/modificar`,objGuitarra,headerConfig());
     }
     const registrarGuitarra = async(objGuitarra) =>{
-        
+        await axios.post(`https://quickpay.com.bo:2024/api/guitarra/registrar`,objGuitarra,headerConfig());
     }
     return {
-        obtenerGuitarras,listaGuitarra,eliminarGuitarra,editarGuitarra
+        obtenerGuitarras,listaGuitarra,eliminarGuitarra,editarGuitarra,registrarGuitarra
       }
-
 });

@@ -22,6 +22,9 @@
       @click:append-inner="visibleLogin = !visibleLogin"></v-text-field>
 
       <v-btn
+        :disabled="loading"
+        :loading="loading"
+
         class="text-none mb-4"
         color="indigo-darken-3"
         size="x-large"
@@ -64,6 +67,8 @@ const visibleLogin = ref(false);
 let email = ref("");
 let contrasenia = ref("");
 const auth = getAuth();
+const loading = ref(false);
+
 let abrirDialogo = ref(false);
 
 import { useLoginStore } from "@/store/LoginStore";
@@ -73,15 +78,15 @@ const abrirFormulario = () =>{
   abrirDialogo.value = true;
 }
 const autenticar = async () =>{
-
-
-
   let obj = {
     username:email.value,
     password:contrasenia.value
   };
 
+  loading.value = true;
   let r = await loginStore.autentication(obj);
+  loading.value = false;
+
   if(r.data.status==200){
     router.push({name:"inicio"});
   }

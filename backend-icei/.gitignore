@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/otros.txt
+
+!**/src/main/resources/application.properties
+!**/src/main/resources/certificate.pfx
+

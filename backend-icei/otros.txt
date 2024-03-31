@@ -1,0 +1,5 @@
+ nohup java -jar /home/quickpay/public_html/quickpay_backend/backend-icei-0.0.1-SNAPSHOT.jar &
+
+ -- matar proceso en linux
+ sudo netstat -tupln
+ sudo kill 19423

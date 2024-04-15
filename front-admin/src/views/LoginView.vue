@@ -9,19 +9,20 @@
       En caso de ser usuario nuevo porfavor <a href="#" @click.prevent="abrirFormulario()">registrese</a> 
     </v-alert>
     <div class="text-subtitle-1 text-medium-emphasis">Usuario</div>
-    <v-text-field v-model="email" density="compact" placeholder="Usuario / Correo" prepend-inner-icon="mdi-email-outline"
+    <v-text-field id="usuario" v-model="email" density="compact" placeholder="Usuario / Correo" prepend-inner-icon="mdi-email-outline"
       variant="outlined"></v-text-field>
 
     <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
       Password
     </div>
 
-    <v-text-field v-model="contrasenia" :append-inner-icon="visibleLogin ? 'mdi-eye-off' : 'mdi-eye'"
+    <v-text-field id="contrasenia" v-model="contrasenia" :append-inner-icon="visibleLogin ? 'mdi-eye-off' : 'mdi-eye'"
       :type="visibleLogin ? 'text' : 'password'" density="compact" placeholder="Ingrese password"
       prepend-inner-icon="mdi-lock-outline" variant="outlined"
       @click:append-inner="visibleLogin = !visibleLogin"></v-text-field>
 
       <v-btn
+      id="btnIngresar"
         :disabled="loading"
         :loading="loading"
 
@@ -33,8 +34,8 @@
         @click="autenticar()"
       >
         Ingresar
-      </v-btn>
-
+        </v-btn>
+    <h4 v-if="error">Error al autenticar</h4>
 
     <v-btn class="mb-8" color="blue" size="large" variant="tonal" block @click="loginFirebase()">
       Ingresar con Firebase
@@ -68,6 +69,7 @@ let email = ref("");
 let contrasenia = ref("");
 const auth = getAuth();
 const loading = ref(false);
+const error = ref(false);
 
 let abrirDialogo = ref(false);
 
@@ -86,9 +88,11 @@ const autenticar = async () =>{
   loading.value = true;
   let r = await loginStore.autentication(obj);
   loading.value = false;
-
-  if(r.data.status==200){
+  error.value = false;
+  if(r.data?.status==200){
     router.push({name:"inicio"});
+  }else{
+    error.value = true;
   }
 }
 

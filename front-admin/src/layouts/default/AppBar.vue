@@ -3,6 +3,28 @@
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     <v-toolbar-title>SISTEMA</v-toolbar-title>
     <v-spacer></v-spacer>
+   
+    
+    <img src="`@/assets/en.jpg`" 
+         alt="en"
+         class="pa-1"
+         width="30px" 
+         height="30px"
+         @click="$i18n.locale = 'en'"
+         >
+
+         <img src="@/assets/es.jpg" 
+         class="pa-1"
+         alt="es"
+         width="30px" 
+         height="30px"
+         @click="$i18n.locale = 'es'"
+         >
+         
+      <!--<select class="ma-2 text-white"  v-model="$i18n.locale">
+          <option v-for="locale in $i18n.availableLocales"  :key="`locale-${locale}`">{{locale}}</option>
+      </select>-->
+
     <v-btn variant="text" icon="mdi mdi-logout" @click="salir()"></v-btn>
   </v-app-bar>
 

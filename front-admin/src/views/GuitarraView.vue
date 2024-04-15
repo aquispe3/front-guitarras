@@ -18,7 +18,8 @@
 
     <PageSlot>
         <template #title>
-            tabla de guitarras
+            {{ $t("message.titulo",{nameTitle:'Guitars'}) }}<br>
+            {{ $t("message.titulo2",{count:guitarraStore.listaGuitarra.length})  }}
         </template>
         <template #content>
 
@@ -27,7 +28,6 @@
             <v-dialog v-model="abrirDialogo" width="auto">
                 <!-- formulario para registro y modificaion -->
                 <v-card class="mx-auto" width="500" title="Formulario de Guitarra">
-                    {{ objGuitarra }}
                     <v-container>
                         <v-text-field color="primary" label="Nombre" v-model="objGuitarra.nombre"
                             variant="underlined"></v-text-field>

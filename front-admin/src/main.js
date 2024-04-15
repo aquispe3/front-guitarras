@@ -30,7 +30,18 @@ const firebaseConfig = {
   appId: "1:617595596582:web:394aa1c0527c1228165be7"
 };
 initializeApp(firebaseConfig);
+
 // ==========================
+import { createI18n } from 'vue-i18n'
+import {messages} from './lang/messages'
+const i18n = createI18n({
+  locale:'en', // inicialmente empieza en ingles
+  fallbackLocale:'en', // en caso nno existe un idioma comfigurado por defecto mostrara ingles
+  messages
+})
+app.use(i18n);
+// =================
+
 
 
 app.mount('#app')
